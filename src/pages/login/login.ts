@@ -15,7 +15,7 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public auth: AuthProvider,
+    public auth: AuthProvider
   ) {}
 
   ionViewDidLoad() {
@@ -24,18 +24,30 @@ export class LoginPage {
 
   login() {
     console.log(this.userid, this.password);
+
+    if (!(this.userid && this.password)) {
+      this.toastmsg("user id or password cannot be null");
+    }
+    if (this.userid && this.password) {
+      console.log(this.auth.login(this.userid, this.password));
+      let status = this.auth.login(this.userid, this.password);
+      if (!status) {
+        this.toastmsg("user id or password is incorrect");
+      }
+      if (status) {
+        this.toastmsg("user authenticated");
+        this.navCtrl.push(HomePage);
+      }
+    }
+  }
+
+  toastmsg(msg) {
     const toast = this.toastCtrl.create({
-      message: "user id or password cannot be null",
+      message: msg,
       duration: 2000
     });
-    if (!(this.userid && this.password)) {
-      toast.present();
-    }
-    if(this.userid && this.password){
-      if(this.auth.login(this.userid, this.password)){
-        this.navCtrl.push(HomePage);
-      };
-    }
+
+    toast.present();
   }
 
   register() {

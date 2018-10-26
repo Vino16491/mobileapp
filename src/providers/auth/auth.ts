@@ -11,8 +11,7 @@ export class AuthProvider {
 
   /* login user */
   login(user:string, pass:string) {
-    let userstatus = this.user.some(u=>u.u == user && u.p == pass)
-    console.log(userstatus)
+    let userstatus = this.user.some(u=>u.u == user && u.p == pass);
     return userstatus;
   }
 
