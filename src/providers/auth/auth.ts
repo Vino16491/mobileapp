@@ -4,7 +4,7 @@ import { Injectable } from "@angular/core";
 @Injectable()
 export class AuthProvider {
   /* Array to store user values */
-  user = [{u:'vinod', p:'Vinod@12345'}];
+  user = [];
   constructor() {
     console.log("Hello AuthProvider Provider");
   }
