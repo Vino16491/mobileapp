@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { SignupPage } from '../signup/signup';
 
 @Component({
   selector: 'page-login',
@@ -17,6 +18,10 @@ password:string;
 
   login(){
     console.log(this.userid, this.password)
+  }
+
+  register(){
+    this.navCtrl.push(SignupPage);
   }
 
 }
