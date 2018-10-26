@@ -23,8 +23,6 @@ export class LoginPage {
   }
 
   login() {
-    console.log(this.userid, this.password);
-
     if (!(this.userid && this.password)) {
       this.toastmsg("user id or password cannot be null");
     }

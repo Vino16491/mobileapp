@@ -23,16 +23,26 @@ export class SignupPage {
   }
 
   signup() {
+    const pass : RegExp = /(?=.*[a-zA-Z])(?=.*[0-9]).{8,}/
     if (!(this.userid && this.password)) {
       this.toastmsg("user id or password cannot be null");
     }
 
     if (this.userid && this.password) {
-      this.auth.signup(this.userid, this.password);
-      if (this.auth.user.find(u => u.u == this.userid)) {
-        this.toastmsg("user registered successfully");
-        this.navCtrl.popTo(LoginPage);
+      console.log(pass.test(this.password))
+      const validcred = ((this.userid.length >= 5 && this.userid.length <=15) && (this.password.length>8 && this.password.length<15) && (pass.test(this.password)))
+      if(!validcred){
+       this.toastmsg('user id should be atleast 5 char and password should be alphanumeric & atleast 8 char')
       }
+      if(validcred){
+        this.auth.signup(this.userid, this.password);
+        if (this.auth.user.some(u => u.u == this.userid)) {
+          this.toastmsg("user registered successfully");
+          this.navCtrl.popTo(LoginPage);
+        }
+      }
+      
+     
     }
   }
 
