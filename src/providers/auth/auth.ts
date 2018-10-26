@@ -5,14 +5,15 @@ import { Injectable } from "@angular/core";
 export class AuthProvider {
   /* Array to store user values */
   user = [];
+  authstatus : Boolean = false;
   constructor() {
     console.log("Hello AuthProvider Provider");
   }
 
   /* login user */
   login(user:string, pass:string) {
-    let userstatus = this.user.some(u=>u.u === user && u.p === pass);
-    return userstatus;
+    this.authstatus = this.user.some(u=>u.u === user && u.p === pass);
+    return this.authstatus;
   }
 
   /* signup user */

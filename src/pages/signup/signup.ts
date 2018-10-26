@@ -38,6 +38,8 @@ export class SignupPage {
         this.auth.signup(this.userid, this.password);
         if (this.auth.user.some(u => u.u == this.userid)) {
           this.toastmsg("user registered successfully");
+          this.userid = null;
+          this.password = null;
           this.navCtrl.popTo(LoginPage);
         }
       }

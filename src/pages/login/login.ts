@@ -49,6 +49,8 @@ export class LoginPage {
   }
 
   register() {
+    this.userid = null;
+    this.password = null;
     this.navCtrl.push(SignupPage);
   }
 }
