@@ -16,7 +16,10 @@ export class AuthProvider {
   }
 
   /* signup user */
-  signup(u:string, p:string) {
-
+  signup(usr:string, pass:string) {
+    if(usr && pass){
+      this.user.push({u:usr, p:pass});
+    }
+    
   }
 }

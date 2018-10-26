@@ -15,7 +15,7 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public toastCtrl: ToastController,
-    public auth: AuthProvider
+    private auth: AuthProvider
   ) {}
 
   ionViewDidLoad() {
