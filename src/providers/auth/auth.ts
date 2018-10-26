@@ -1,17 +1,23 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 
-/*
-  Generated class for the AuthProvider provider.
+import { Injectable } from "@angular/core";
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class AuthProvider {
-
-  constructor(public http: HttpClient) {
-    console.log('Hello AuthProvider Provider');
+  /* Array to store user values */
+  user = [{u:'vinod', p:'Vinod@12345'}];
+  constructor() {
+    console.log("Hello AuthProvider Provider");
   }
 
+  /* login user */
+  login(user:string, pass:string) {
+    let userstatus = this.user.some(u=>u.u == user && u.p == pass)
+    console.log(userstatus)
+    return userstatus;
+  }
+
+  /* signup user */
+  signup(u:string, p:string) {
+
+  }
 }
